@@ -1,11 +1,16 @@
 TARGET := sample
 CC := gcc
+CPPFLAGS := -std=c++2a
 LDFLAGS := -lstdc++
+FILES = sample.cpp info_unix.cpp
+ifeq ($(OS),Windows_NT)
+	FILES += info_windows.cpp
+endif
 
-all: sample
+all: $(TARGET)
 
-sample: sample.cpp sample_unix.cpp
-	$(CC) sample.cpp sample_unix.cpp -o $(TARGET) $(LDFLAGS)
+$(TARGET): $(FILES)
+	$(CC) $(CPPFLAGS) $(FILES) -o $(TARGET) $(LDFLAGS)
 
 .PHONY: clean
 clean:
@@ -14,4 +19,8 @@ ifeq ($(OS),Windows_NT)
 else
 	rm $(TARGET)
 endif
+
+.PHONY: run
+run:
+	./$(TARGET)
 

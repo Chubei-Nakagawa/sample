@@ -1,6 +1,7 @@
 #include <iostream>
 
-void unix_info();
+extern void windows_info(std::ostream&);
+extern void unix_info();
 
 void cpp_info()
 {
@@ -14,16 +15,12 @@ void cpp_info()
   }
 }
 
-#if __cplusplus > 201700L 
-void any_test()
-{
-}
-#endif
-
-
 int main(int argc, char** argv)
 {
-  cpp_info();
-  unix_info();
-  return 0;
+    cpp_info();
+    unix_info();
+#if defined(_WIN32) || defined(__CYGWIN__)
+    windows_info(std::cout);
+#endif
+    return 0;
 }

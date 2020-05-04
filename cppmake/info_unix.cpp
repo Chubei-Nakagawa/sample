@@ -2,6 +2,7 @@
 #include <iostream>
 
 #if defined(__MINGW64__) || defined(__MINGW32_)
+#include <windows.h>
 void unix_info()
 {
     std::cout << "no unix libraries" << std::endl;
@@ -21,7 +22,6 @@ void unix_info()
       std::cout << "version:" << buff.version << std::endl;
     }
   }
-
 }
 
 #endif
