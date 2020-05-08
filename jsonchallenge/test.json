@@ -1,0 +1,7 @@
+{
+    "intvalue": 13,
+    "boolvalue": true,
+    "nullvalue": null,
+    "listvalue": [ 1, 3, 6 ],
+    "objvalue": { "foo": 13.2, "bar": "moji", "val": [ 5,9,6,3] }
+}
