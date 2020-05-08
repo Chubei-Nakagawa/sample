@@ -6,6 +6,9 @@ FILES = sample.cpp info_unix.cpp
 ifeq ($(OS),Windows_NT)
 	FILES += info_windows.cpp
 endif
+#ifeq ($(OS),linux-gnu)
+#	FILES += info_linux.cpp
+#endif
 
 all: $(TARGET)
 

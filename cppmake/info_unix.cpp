@@ -7,8 +7,14 @@ void unix_info()
 {
     std::cout << "no unix libraries" << std::endl;
 }
+
 #else
 #include <sys/utsname.h>
+
+void network_info(std::ostream& ostr)
+{
+
+}
 
 void unix_info()
 {
