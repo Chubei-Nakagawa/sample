@@ -6,9 +6,9 @@ FILES = sample.cpp info_unix.cpp
 ifeq ($(OS),Windows_NT)
 	FILES += info_windows.cpp
 endif
-#ifeq ($(OS),linux-gnu)
-#	FILES += info_linux.cpp
-#endif
+ifeq ($(shell uname),Linux)
+	FILES += info_linux.cpp
+endif
 
 all: $(TARGET)
 
@@ -20,7 +20,7 @@ clean:
 ifeq ($(OS),Windows_NT)
 	rm $(TARGET).exe
 else
-	rm $(TARGET)
+	rm -f $(TARGET)
 endif
 
 .PHONY: run

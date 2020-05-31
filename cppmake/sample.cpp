@@ -5,7 +5,7 @@
 using std::endl;
 
 extern void windows_info(std::ostream&);
-extern void unix_info();
+extern void unix_info(std::ostream&);
 
 void cpp_info()
 {
@@ -43,7 +43,7 @@ void type_info(std::ostream& ostr)
 int main(int argc, char** argv)
 {
     cpp_info();
-    unix_info();
+    unix_info(std::cout);
 #if defined(_WIN32) || defined(__CYGWIN__)
     windows_info(std::cout);
 #endif

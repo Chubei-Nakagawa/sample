@@ -3,31 +3,29 @@
 
 #if defined(__MINGW64__) || defined(__MINGW32_)
 #include <windows.h>
-void unix_info()
+void unix_info(std::ostream& ostr)
 {
-    std::cout << "no unix libraries" << std::endl;
+    ostr << "no unix libraries" << std::endl;
 }
 
 #else
 #include <sys/utsname.h>
 
-void network_info(std::ostream& ostr)
-{
+void network_info(std::ostream& ostr);
 
-}
-
-void unix_info()
+void unix_info(std::ostream& ostr)
 {
-  {
-    struct utsname buff;
-    if (uname(&buff) < 0) {
-      std::cout << "uname error" << std::endl;
-    } else {
-      std::cout << "sysname:" << buff.sysname << std::endl;
-      std::cout << "release:" << buff.release << std::endl;
-      std::cout << "version:" << buff.version << std::endl;
+    {
+        struct utsname buff;
+        if (uname(&buff) < 0) {
+            ostr << "uname error" << std::endl;
+        } else {
+            ostr << "sysname:" << buff.sysname << std::endl;
+            ostr << "release:" << buff.release << std::endl;
+            ostr << "version:" << buff.version << std::endl;
+        }
     }
-  }
+    network_info(ostr);
 }
 
 #endif
