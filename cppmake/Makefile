@@ -1,6 +1,6 @@
 TARGET := sample
 CC := gcc
-CPPFLAGS := -std=c++2a
+CPPFLAGS := -std=c++17
 LDFLAGS := -lstdc++
 FILES = sample.cpp info_unix.cpp
 ifeq ($(OS),Windows_NT)

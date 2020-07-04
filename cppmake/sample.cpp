@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <string>
+#include <typeinfo>
 
 using std::endl;
 
